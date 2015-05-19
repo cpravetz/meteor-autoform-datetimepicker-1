@@ -15,7 +15,7 @@ Simply add type='datetimepicker' to your afQuickField
   <button type="submit">Submit</button>
 {{/autoForm}}
 ```
-Or you could optionally set datetimepicker as the default type in you schema
+Or you could optionally set datetimepicker as the default type in your schema
 ```javascript
 Schema.Date = new SimpleSchema({
   date: {
