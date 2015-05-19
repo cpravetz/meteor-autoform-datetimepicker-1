@@ -1,8 +1,7 @@
 Simple Date-Time picker for autoform
-
+![screenshot](/../master/screenshot.png?raw=true "datetimepicker screenshot")
 Installation
 ============
-![screenshot](/../master/screenshot.png?raw=true "datetimepicker screenshot")
 Prerequisites
 -------------
 ###requires
