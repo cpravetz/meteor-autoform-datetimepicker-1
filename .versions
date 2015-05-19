@@ -7,7 +7,7 @@ callback-hook@1.0.3
 check@1.0.5
 ddp@1.1.0
 deps@1.0.7
-drewy:autoform-datetimepicker@1.0.0
+drewy:autoform-datetimepicker@1.0.3
 ejson@1.0.6
 geojson-utils@1.0.3
 html-tools@1.0.4

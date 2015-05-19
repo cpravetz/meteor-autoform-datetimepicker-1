@@ -1,6 +1,6 @@
 Package.describe({
   name: 'drewy:autoform-datetimepicker',
-  version: '1.0.0',
+  version: '1.0.3',
   // Brief, one-line summary of the package.
   summary: 'Incredibly simple datetimepicker',
   // URL to the Git repository containing the source code for this package.
@@ -12,6 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.use(['aldeed:autoform@5.1.2', 'underscore']);
-  api.addFiles(['autoform-datetimepicker.html', 'autoform-datetimepicker.js']);
+
+  api.use(['aldeed:autoform@5.1.2', 'underscore', 'templating', 'blaze'], 'client');
+  api.addFiles(['autoform-datetimepicker.html', 'autoform-datetimepicker.js'], 'client');
 });
