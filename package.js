@@ -12,6 +12,6 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.use(['aldeed:autoform', 'underscore']);
+  api.use(['aldeed:autoform@5.1.2', 'underscore']);
   api.addFiles(['autoform-datetimepicker.html', 'autoform-datetimepicker.js']);
 });
