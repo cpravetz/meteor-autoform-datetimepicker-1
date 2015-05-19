@@ -14,10 +14,5 @@ AutoForm.addInputType("datetimepicker", {
   template: "datetimepicker",
   valueOut: function () {
     return this.val();
-  },
-  valueConverters: {
-    date: function (val) {
-      return moment(val).toDate();
-    }
   }
 });
