@@ -1,5 +1,8 @@
+Simple Date-Time picker for autoform
+
 Installation
 ============
+![screenshot](/../<branch name>/meteor-autoform-datetimepicker/master/screenshot.png?raw=true "datetimepicker screenshot")
 Prerequisites
 -------------
 ###requires
