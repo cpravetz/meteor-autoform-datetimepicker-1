@@ -4,7 +4,6 @@ Template.datetimepicker.onRendered(function() {
 
 Template.datetimepicker.helpers({
   atts: function () {
-    console.log(this);
     var atts = _.omit(this.atts, 'opts');
     return atts;
   }
