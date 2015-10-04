@@ -23,7 +23,9 @@ Schema.Date = new SimpleSchema({
   date: {
     type: String,
     autoForm: {
-      type: 'datetimepicker'
+      afFieldInput: {
+        type: "datetimepicker",
+      }
     }
   }
 });
