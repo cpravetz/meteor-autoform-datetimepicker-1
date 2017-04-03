@@ -8,7 +8,6 @@ Installation
 ============
 Prerequisites
 -------------
-###requires
 * [datetimepicker](https://github.com/xdan/datetimepicker) which can be installed with `meteor add drewy:datetimepicker`
 * [autoform](https://github.com/aldeed/meteor-autoform)
 
