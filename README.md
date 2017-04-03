@@ -1,3 +1,5 @@
+[Deprecated as of 04/03/2017]
+
 ![screenshot](/../master/screenshot.png?raw=true "datetimepicker screenshot")
 
 Simple Date-Time picker for autoform
