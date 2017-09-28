@@ -1,4 +1,4 @@
-[Deprecated as of 04/03/2017]
+Fork Updated to autoform 6.2.0
 
 ![screenshot](/../master/screenshot.png?raw=true "datetimepicker screenshot")
 
