@@ -24,10 +24,13 @@ Or you could optionally set datetimepicker as the default type in your schema
 ```javascript
 Schema.Date = new SimpleSchema({
   date: {
-    type: String,
+    type: Date,
     autoForm: {
       afFieldInput: {
         type: "datetimepicker",
+        opts: {
+          format: "DD-MM-YYYY HH:mm"
+        }
       }
     }
   }
