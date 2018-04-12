@@ -5,14 +5,17 @@ import { moment } from 'meteor/momentjs:moment'
 Template.flatpickerange.onRendered(function() {
   template = this
   opts = {}
-  if ((template.data) && (template.data.atts.opts))
-    opts = _.extend(opts,template.data.atts.opts)
+  data = template.data
+  if ((data) && (data.atts.opts))
+    opts = _.extend(opts,data.atts.opts)
   opts = _.extend(opts,{mode: "range"})
   $(template.firstNode).flatpickr(opts)
 });
 
 Template.flatpickerange.helpers({
-  atts() { return _.omit(this.atts, 'opts') }
+  atts() {
+    const atts = Template.currentData().atts
+    return _.omit(atts, 'opts') }
 });
 
 AutoForm.addInputType("flatpickerange", {
@@ -30,11 +33,9 @@ AutoForm.addInputType("flatpickerange", {
   },
   valueOut: function () {
     range = this.val().split(' to ')
-    console.log(range);
     if (range.length == 2) {
       start = moment(range[0], "YYYY-MM-DD").toDate();
       end = moment(range[1], "YYYY-MM-DD").toDate();
-      console.log({ start, end });
       return { start, end }
     }
     else return {}
