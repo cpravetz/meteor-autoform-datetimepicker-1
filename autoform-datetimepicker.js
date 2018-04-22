@@ -64,7 +64,8 @@ AutoForm.addInputType("flatpicker", {
     return moment(val).format(format);
   },
   valueOut: function () {
-    return moment(this.val(), "YYYY-MM-DD").toDate();
+    const momentOut = moment(this.val(), "YYYY-MM-DD");
+    return momentOut.isValid() ? momentOut.toDate() : this.val();
   },
 })
 
@@ -87,6 +88,7 @@ AutoForm.addInputType("datetimepicker", {
     return moment(val).format(format);
   },
   valueOut: function () {
-    return moment(this.val(), "DD-MM-YYYY HH:mm").toDate();
+    const momentOut = moment(this.val(), "DD-MM-YYYY HH:mm");
+    return momentOut.isValid() ? momentOut.toDate() : this.val();
   },
 });
