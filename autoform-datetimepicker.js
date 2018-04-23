@@ -3,9 +3,9 @@ import 'flatpickr/dist/flatpickr.css'
 import { moment } from 'meteor/momentjs:moment'
 
 Template.flatpickerange.onRendered(function() {
-  template = this
-  opts = {}
-  data = template.data
+  const template = this
+  let opts = {}
+  const data = template.data
   if ((data) && (data.atts.opts))
     opts = _.extend(opts,data.atts.opts)
   opts = _.extend(opts,{mode: "range"})
@@ -43,8 +43,8 @@ AutoForm.addInputType("flatpickerange", {
 })
 
 Template.flatpicker.onRendered(function() {
-  template = this
-  opts = {}
+  const template = this
+  let opts = {}
   if ((template.data) && (template.data.atts.opts))
     opts = _.extend(opts,template.data.atts.opts)
   $(template.firstNode).flatpickr(opts)
@@ -64,12 +64,13 @@ AutoForm.addInputType("flatpicker", {
     return moment(val).format(format);
   },
   valueOut: function () {
-    return moment(this.val(), "YYYY-MM-DD").toDate();
+    const momentOut = moment(this.val(), "YYYY-MM-DD");
+    return momentOut.isValid() ? momentOut.toDate() : this.val();
   },
 })
 
 Template.datetimepicker.onRendered(function() {
-  opts = this.data.atts.opts;
+  const opts = this.data.atts.opts;
   $(this.firstNode).datetimepicker(opts);
 });
 
@@ -87,6 +88,7 @@ AutoForm.addInputType("datetimepicker", {
     return moment(val).format(format);
   },
   valueOut: function () {
-    return moment(this.val(), "DD-MM-YYYY HH:mm").toDate();
+    const momentOut = moment(this.val(), "DD-MM-YYYY HH:mm");
+    return momentOut.isValid() ? momentOut.toDate() : this.val();
   },
 });
