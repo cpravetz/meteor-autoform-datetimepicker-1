@@ -8,6 +8,7 @@ Package.describe({
 
 Npm.depends({
   flatpickr: '4.4.3',
+  moment: '2.22.1',
 })
 
 Package.onUse((api) => {
@@ -19,7 +20,7 @@ Package.onUse((api) => {
     'underscore',
     'templating',
     'blaze',
-    'momentjs:moment',
+    // 'momentjs:moment',
   ], 'client')
 
   api.addFiles([

@@ -5,6 +5,11 @@
       "version": "4.4.3",
       "resolved": "https://registry.npmjs.org/flatpickr/-/flatpickr-4.4.3.tgz",
       "integrity": "sha512-HKv/c8BodePv/kaTVa+9C+/ZGPH+r3EQ92fCGDuhfAsEDlP1W004JNXx+yrUkCE+ZaO/XpM5Shc8FjG4ds0wKA=="
+    },
+    "moment": {
+      "version": "2.22.1",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.22.1.tgz",
+      "integrity": "sha512-shJkRTSebXvsVqk56I+lkb2latjBs8I+pc2TzWc545y2iFnSjm7Wg0QMh+ZWcdSLQyGEau5jI8ocnmkyTgr9YQ=="
     }
   }
 }
