@@ -3,16 +3,15 @@ Package.describe({
   version: '1.0.8',
   summary: 'Incredibly simple datetimepicker',
   git: 'https://github.com/abate/meteor-autoform-datetimepicker',
-  documentation: 'README.md',
-})
+  documentation: 'README.md'
+});
 
 Npm.depends({
-  flatpickr: '4.4.3',
-  moment: '2.22.1',
+  'flatpickr':'4.4.3',
 })
 
-Package.onUse((api) => {
-  api.versionsFrom('1.1.0.2')
+Package.onUse(function(api) {
+  api.versionsFrom('1.1.0.2');
 
   api.use([
     'ecmascript',
@@ -20,11 +19,11 @@ Package.onUse((api) => {
     'underscore',
     'templating',
     'blaze',
-    // 'momentjs:moment',
-  ], 'client')
+    'momentjs:moment'
+  ], 'client');
 
   api.addFiles([
     'autoform-datetimepicker.html',
-    'autoform-datetimepicker.js',
-  ], 'client')
-})
+    'autoform-datetimepicker.js'
+  ], 'client');
+});

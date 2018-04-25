@@ -1,118 +1,92 @@
-import 'flatpickr'
-import 'flatpickr/dist/flatpickr'
-// import { moment } from 'meteor/momentjs:moment'
-import moment from 'moment'
+import flatpickr from "flatpickr";
+import 'flatpickr/dist/flatpickr.css'
+import { moment } from 'meteor/momentjs:moment'
 
-// Range *******************************
-Template.flatpickerange.onRendered(function onRendered() {
-  const template = this
-  let opts = {}
-  const { data } = template
-  if ((data) && (data.atts.opts)) { opts = _.extend(opts, data.atts.opts) }
-  opts = _.extend(opts, { mode: 'range' })
-  template.$(template.firstNode).flatpickr(opts)
-})
+Template.flatpickerange.onRendered(function() {
+  template = this
+  opts = {}
+  data = template.data
+  if ((data) && (data.atts.opts))
+    opts = _.extend(opts,data.atts.opts)
+  opts = _.extend(opts,{mode: "range"})
+  $(template.firstNode).flatpickr(opts)
+});
 
 Template.flatpickerange.helpers({
   atts() {
-    const { atts } = Template.currentData()
-    return _.omit(atts, 'opts')
-  },
-})
+    const atts = Template.currentData().atts
+    return _.omit(atts, 'opts') }
+});
 
-AutoForm.addInputType('flatpickerange', {
-  template: 'flatpickerange',
-  valueIn(val, atts) {
+AutoForm.addInputType("flatpickerange", {
+  template: "flatpickerange",
+  valueIn: function (val, atts) {
     if (!val) { return val }
-    let format = 'YYYY-MM-DD'
-    if ((atts.opts) && (atts.opts.format)) {
-      ({ format } = atts.opts)
+    else {
+      var format = "YYYY-MM-DD"
+      if ((atts.opts) && (atts.opts.format))
+        format = atts.opts.format;
+      s = moment(val.start).format(format);
+      e = moment(val.end).format(format);
+      return `${s} to ${e}`
     }
-    const s = moment(val.start).format(format)
-    const e = moment(val.end).format(format)
-    return `${s} to ${e}`
   },
-  valueOut() {
-    const range = this.val().split(' to ')
-    if (range.length === 2) {
-      const start = moment(range[0], 'YYYY-MM-DD').toDate()
-      const end = moment(range[1], 'YYYY-MM-DD').toDate()
+  valueOut: function () {
+    range = this.val().split(' to ')
+    if (range.length == 2) {
+      start = moment(range[0], "YYYY-MM-DD").toDate();
+      end = moment(range[1], "YYYY-MM-DD").toDate();
       return { start, end }
-    } return {}
+    }
+    else return {}
   },
 })
 
-// Date/Time (flatpickr) ***************************************
-
-Template.flatpicker.onRendered(function onRendered() {
-  const template = this
-  let opts = {}
-  if ((template.data) && (template.data.atts.opts)) {
-    opts = _.extend(opts, template.data.atts.opts)
-  }
-  template.$(template.firstNode).flatpickr(opts)
-})
+Template.flatpicker.onRendered(function() {
+  template = this
+  opts = {}
+  if ((template.data) && (template.data.atts.opts))
+    opts = _.extend(opts,template.data.atts.opts)
+  $(template.firstNode).flatpickr(opts)
+});
 
 Template.flatpicker.helpers({
-  atts() { return _.omit(this.atts, 'opts') },
-})
+  atts() { return _.omit(this.atts, 'opts') }
+});
 
-AutoForm.addInputType('flatpicker', {
-  template: 'flatpicker',
-  valueIn(val, atts) {
-    let format = 'YYYY-MM-DD'
-    if ((atts.opts) && (atts.opts.format)) { ({ format } = atts.opts) }
-    if (!val) { return val }
-    return moment(val).format(format)
+AutoForm.addInputType("flatpicker", {
+  template: "flatpicker",
+  valueIn: function (val, atts) {
+    var format = "YYYY-MM-DD";
+    if ((atts.opts) && (atts.opts.format))
+      format = atts.opts.format;
+    if (! val) { return val; }
+    return moment(val).format(format);
   },
-  valueOut() {
-    const momentOut = moment(this.val(), 'YYYY-MM-DD')
-    return momentOut.isValid() ? momentOut.toDate() : this.val()
+  valueOut: function () {
+    return moment(this.val(), "YYYY-MM-DD").toDate();
   },
 })
 
-// Time (datetimepicker) ***************************************
-
-Template.timepicker.onRendered(function onRendered() {
-  const template = this
-  const { opts } = this.data.atts
-  opts.datepicker = false
-  if (!opts.format) {
-    opts.format = 'H:i'
-  }
-  template.$(template.firstNode).datetimepicker(opts)
-})
-
-Template.timepicker.helpers({
-  atts() { return _.omit(this.atts, 'opts') },
-})
-
-AutoForm.addInputType('timepicker', {
-  template: 'timepicker',
-})
-
-// Date/Time (bootstrap picker) ******************************************
-
-Template.datetimepicker.onRendered(function onRendered() {
-  const template = this
-  const { opts } = this.data.atts
-  template.$(template.firstNode).datetimepicker(opts)
-})
+Template.datetimepicker.onRendered(function() {
+  opts = this.data.atts.opts;
+  $(this.firstNode).datetimepicker(opts);
+});
 
 Template.datetimepicker.helpers({
-  atts() { return _.omit(this.atts, 'opts') },
-})
+  atts() { return _.omit(this.atts, 'opts') }
+});
 
-AutoForm.addInputType('datetimepicker', {
-  template: 'datetimepicker',
-  valueIn(val, atts) {
-    let format = 'DD-MM-YYYY HH:mm'
-    if ((atts.opts) && (atts.opts.format)) { ({ format } = atts.opts) }
-    if (!val) { return val }
-    return moment(val).format(format)
+AutoForm.addInputType("datetimepicker", {
+  template: "datetimepicker",
+  valueIn: function (val, atts) {
+    var format = "DD-MM-YYYY HH:mm";
+    if ((atts.opts) && (atts.opts.format))
+      format = atts.opts.format;
+    if (! val) { return val; }
+    return moment(val).format(format);
   },
-  valueOut() {
-    const momentOut = moment(this.val(), 'DD-MM-YYYY HH:mm')
-    return momentOut.isValid() ? momentOut.toDate() : this.val()
+  valueOut: function () {
+    return moment(this.val(), "DD-MM-YYYY HH:mm").toDate();
   },
-})
+});
