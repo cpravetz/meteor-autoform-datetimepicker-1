@@ -8,6 +8,7 @@ Package.describe({
 
 Npm.depends({
   flatpickr: '4.4.4',
+  // 'jquery-datetimepicker': '2.4.7',
 })
 
 Package.onUse((api) => {
@@ -20,6 +21,8 @@ Package.onUse((api) => {
     'templating',
     'blaze',
     'momentjs:moment',
+    // XXX we should use the jquery-datetimepicker npm package instead
+    'drewy:datetimepicker',
   ], 'client')
 
   api.addFiles([

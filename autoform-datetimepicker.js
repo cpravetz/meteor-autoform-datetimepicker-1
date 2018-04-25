@@ -92,3 +92,18 @@ AutoForm.addInputType('datetimepicker', {
     return moment(this.val(), 'DD-MM-YYYY HH:mm').toDate()
   },
 })
+
+Template.timepicker.onRendered(function onRendered() {
+  const template = this
+  const { opts } = this.data.atts
+  opts.timepicker = true
+  template.$(this.firstNode).datetimepicker(opts)
+})
+
+Template.timepicker.helpers({
+  atts() { return _.omit(this.atts, 'opts') },
+})
+
+AutoForm.addInputType('timepicker', {
+  template: 'timepicker',
+})
