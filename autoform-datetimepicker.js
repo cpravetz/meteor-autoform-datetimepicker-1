@@ -107,4 +107,15 @@ Template.timepicker.helpers({
 
 AutoForm.addInputType('timepicker', {
   template: 'timepicker',
+  valueIn(val) {
+    if (val) {
+      return val.slice(0, 5)
+    }
+    return val
+  },
+  valueOut() {
+    const val = this.val()
+    const timezone = moment().format('ZZ')
+    return `${val}:${timezone}`
+  },
 })
