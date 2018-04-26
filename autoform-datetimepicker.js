@@ -56,15 +56,16 @@ Template.flatpicker.helpers({
 AutoForm.addInputType('flatpicker', {
   template: 'flatpicker',
   valueIn(val, atts) {
-    let format = 'YYYY-MM-DD'
+    let format = 'DD-MM-YYYY'
     if ((atts.opts) && (atts.opts.format)) {
       ({ format } = atts.opts)
     }
+    console.log(val)
     if (!val) { return val }
-    return moment(val).format(format)
+    return moment(val)
   },
   valueOut() {
-    return moment(this.val(), 'YYYY-MM-DD').toDate()
+    return moment(this.val(), 'DD-MM-YYYY').toDate()
   },
 })
 
