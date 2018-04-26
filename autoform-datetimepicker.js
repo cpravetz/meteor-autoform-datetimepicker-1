@@ -56,13 +56,12 @@ Template.flatpicker.helpers({
 AutoForm.addInputType('flatpicker', {
   template: 'flatpicker',
   valueIn(val, atts) {
+    if (!val) { return val }
     let format = 'DD-MM-YYYY'
     if ((atts.opts) && (atts.opts.format)) {
       ({ format } = atts.opts)
     }
-    console.log(val)
-    if (!val) { return val }
-    return moment(val)
+    return moment(val).format(format)
   },
   valueOut() {
     return moment(this.val(), 'DD-MM-YYYY').toDate()
@@ -114,8 +113,6 @@ AutoForm.addInputType('timepicker', {
     return val
   },
   valueOut() {
-    const val = this.val()
-    const timezone = moment().format('ZZ')
-    return `${val}:${timezone}`
+    return this.val()
   },
 })
