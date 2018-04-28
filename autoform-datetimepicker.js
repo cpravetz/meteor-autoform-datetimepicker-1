@@ -43,6 +43,7 @@ AutoForm.addInputType('flatpickerange', {
 Template.flatpicker.onRendered(function onRendered() {
   const template = this
   let opts = {}
+  opts.altInput = true
   if ((template.data) && (template.data.atts.opts)) {
     opts = _.extend(opts, template.data.atts.opts)
   }
@@ -57,14 +58,17 @@ AutoForm.addInputType('flatpicker', {
   template: 'flatpicker',
   valueIn(val, atts) {
     if (!val) { return val }
-    let format = 'DD-MM-YYYY'
+    // flatpicker uses altFormat to display the date
+    // but internally the default format is 'YYYY-MM-DD'
+    // that use use to parse the date back and forth
+    let format = 'YYYY-MM-DD'
     if ((atts.opts) && (atts.opts.format)) {
       ({ format } = atts.opts)
     }
     return moment(val).format(format)
   },
   valueOut() {
-    return moment(this.val(), 'DD-MM-YYYY').toDate()
+    return moment(this.val(), 'YYYY-MM-DD').toDate()
   },
 })
 
