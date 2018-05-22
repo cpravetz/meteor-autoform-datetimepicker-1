@@ -1,3 +1,4 @@
+import { Template } from 'meteor/templating'
 import flatpickr from 'flatpickr'
 import 'flatpickr/dist/flatpickr.css'
 import { moment } from 'meteor/momentjs:moment'
@@ -99,8 +100,18 @@ AutoForm.addInputType('datetimepicker', {
 
 Template.timepicker.onRendered(function onRendered() {
   const template = this
-  const { opts } = this.data.atts
-  opts.timepicker = true
+  const defaultOpts = {
+    timepicker: true,
+    datepicker: false,
+    format: 'HH:mm',
+    formatTime: 'HH:mm',
+  }
+  let { opts } = this.data.atts
+  if (opts) {
+    opts = Object.assign(opts, defaultOpts)
+  } else {
+    opts = defaultOpts
+  }
   template.$(this.firstNode).datetimepicker(opts)
 })
 
