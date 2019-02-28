@@ -8,6 +8,7 @@ Package.describe({
 
 Npm.depends({
   flatpickr: '4.4.4',
+  'moment-timezone': '0.5.23',
   // 'jquery-datetimepicker': '2.4.7',
 })
 
@@ -20,7 +21,6 @@ Package.onUse((api) => {
     'underscore',
     'templating',
     'blaze',
-    'momentjs:moment',
     // XXX we should use the jquery-datetimepicker npm package instead
     'drewy:datetimepicker',
   ], 'client')
@@ -29,4 +29,6 @@ Package.onUse((api) => {
     'autoform-datetimepicker.html',
     'autoform-datetimepicker.js',
   ], 'client')
+
+  api.export(['setPickerTimezone'])
 })

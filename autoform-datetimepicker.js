@@ -1,7 +1,9 @@
 import { Template } from 'meteor/templating'
 import flatpickr from 'flatpickr'
 import 'flatpickr/dist/flatpickr.css'
-import { moment } from 'meteor/momentjs:moment'
+import moment from 'moment-timezone'
+
+setPickerTimezone = timezone => moment.tz.setDefault(timezone)
 
 Template.flatpickerange.onRendered(function onRendered() {
   const template = this
